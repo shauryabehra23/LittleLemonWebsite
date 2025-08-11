@@ -1,38 +1,270 @@
-.App {
+/* 1. Global Styles & Best Practices */
+* {
+  box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+}
+
+body {
+  font-family: sans-serif; /* A fallback font is always a good idea */
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button {
+  background-color: yellow;
+  color: #295345;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem; /* Add padding for better clickability */
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  margin: 0.5rem; /* Consistent margin for buttons */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* 2. Main Layout Containers */
+.navbar, .header, .main, .footer {
+  max-width: 80vw; /* Limits the maximum width on large screens */
+  margin-left: auto;   /* These two lines center the container */
+  margin-right: auto;
+  padding-left: 2rem;   /* Adds space inside the container edges */
+  padding-right: 2rem;
+}
+
+/* 3. Navbar */
+.navbar {
+  display: flex;
+  position: fixed;
+  background-color: aliceblue;
+  top: 0;
+  right:0;
+  left:0;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.navbar img {
+  height: 2em;
+  width: auto;
+  object-fit: contain;
+}
+
+.navbar a {
+  color: #495E57;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+/* 4. Header Section */
+.header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Simpler 2-column grid */
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "title image"
+    "text  image"
+    "button image";
+  align-items: center; /* Vertically align items in the grid */
+  gap: 1rem;
+  background-color: #495E57;
+  color: aliceblue;
+  border-radius: 10px;
+  margin-top: 6rem;
+  margin-bottom: 6rem;
+}
+
+.header * {
+  margin: 0.5em;
+}
+
+.heading {
+    display: flex;
+    grid-area: title;
+    text-align: left;
+}
+
+.header-subtitle {
+    grid-area: text;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.header button {
+  grid-area: button;
+  justify-self: start; /* Aligns the button to the start of the grid cell */
+}
+
+.header-logo {
+  grid-area: logo;
+  width: 15%;
+  height: auto;
+}
+
+.header .display {
+  grid-area: image;
+  max-width: 60%;
+  height: auto;
+  padding: auto;
+  margin: auto;
+  object-fit: cover;
+}
+
+/* 5. Highlights & Testimonials Sections */
+.highlights, .testimonials {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 2em;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.testimonials {
+  background-color: #495E57;
+  color: aliceblue;
+  border-radius: 10px;
+  margin-top: 2rem;
+  margin-bottom: 8em;
+}
+
+/* 6. Card Component */
+.card {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f0f0; /* Added background to distinguish cards */
+  border-radius: 10px;
+  overflow: hidden; /* Keeps content within the rounded corners */
+}
+.card .card-content {
+    padding: 1rem;
+    flex-grow: 1; /* Allows this section to grow, pushing the button down */
+    text-align: left;
+    color: #333;
+}
+
+.card img:first-child {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.card button {
+  margin: 1rem; /* Use margin instead of margin-bottom: 0 for spacing */
+}
+
+/* 7. Testimonials Card Specifics */
+.testimonials .card {
+  display: flex; /* Revert to flex for simplicity and consistency */
+  flex-direction: column;
+  align-items: center;
+  background-color: #333; /* Darker background for contrast */
+  padding: 1rem;
+}
+
+.testimonials .card .dp {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid yellow;
+}
+
+.testimonials .card .stars {
+  width: 100px; /* Fixed width for star rating image/element */
+  margin-top: 0.5rem;
+}
+
+.testimonials .card p {
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* 8. Footer */
+.footer {
+    position: fixed;
+  bottom: 0;
+  left:0;
+  right:0;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  height: auto;
+  background-color: #f0f0f0;
+}
+
+/* 9. RESPONSIVE DESIGN - MEDIA QUERIES */
+
+/* For Tablets */
+@media (max-width: 992px) {
+  .header {
+    grid-template-areas:
+      "title title"
+      "text  text"
+      "button image"; /* Adjust grid for medium screens */
+  }
+  .highlights, .testimonials {
+    flex-wrap: wrap; /* Allow cards to wrap to the next line */
+  }
+  .card {
+    width: 45%; /* Two cards per row */
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.login-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100vh; /* Full viewport height */
+  margin-bottom: 6rem;
 }
 
-.App-link {
-  color: #61dafb;
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full viewport height */
+  margin-bottom: 6rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.book-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full viewport height */
+  margin-bottom: 6rem;
+}
+
+/* For Mobile Phones */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack nav links vertically */
+    gap: 1rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .header {
+    display: flex; /* Switch to flex for a simple vertical stack */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+   .header-content, .header .header-subtitle {
+    text-align: center;
+  }
+  .header button {
+     justify-self: center; /* Center the button */
+  }
+  .highlights, .testimonials {
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center;
+  }
+
+  .card {
+    width: 80%; /* Make cards wider on mobile */
   }
 }
