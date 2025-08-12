@@ -92,9 +92,16 @@ button {
     margin-bottom: 1rem;
 }
 
-.header button {
+.header-button {
   grid-area: button;
   justify-self: start; /* Aligns the button to the start of the grid cell */
+  color:#495E57;
+  background-color: yellow;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem; /* Add padding for better clickability */
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .header-logo {

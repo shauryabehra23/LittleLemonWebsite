@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useReducer } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function Book(props) {
@@ -12,7 +13,7 @@ function Book(props) {
       scrollref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, []);
-
+      const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -47,6 +48,8 @@ function Book(props) {
     e.preventDefault();
     alert(`Table booked for ${formData.name} on ${formData.date} at ${formData.time} for ${formData.guests} guests on the occasion of ${formData.occasion}`);
     // Add your form submission logic here if needed
+    props.setReservation(formData);
+    navigate("/confirm");
   }
 
 
