@@ -6,7 +6,11 @@ function Card({ image, title, food, price, text, stars }) {
       <span className="title">{title}</span>
       {food && <span>{price}</span>}
       <p>{text}</p>
-      {food && <button>See More &rarr;</button>}
+      {food && (
+        <a href="/menu" style={{ textDecoration: "none" }}>
+          <button>See More &rarr;</button>
+        </a>
+      )}
     </div>
   );
 }

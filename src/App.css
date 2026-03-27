@@ -7,27 +7,44 @@
 }
 
 body {
-  font-family: sans-serif; /* A fallback font is always a good idea */
+  font-family: sans-serif;
   text-align: center;
+  margin: 0;
+  background-color: #f5f5f5;
+  color: #333333;
+}
+
+.App {
+  margin-top: 7rem;
+  padding-bottom: 8rem;
 }
 
 button {
-  background-color: yellow;
-  color: #295345;
+  background-color: #f4ce14;
+  color: #495e57;
   font-weight: 600;
-  padding: 0.75rem 1.5rem; /* Add padding for better clickability */
+  padding: 0.75rem 1.5rem;
   border-radius: 10px;
   border: none;
   cursor: pointer;
-  margin: 0.5rem; /* Consistent margin for buttons */
+  margin: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #e07a5f;
+  color: #ffffff;
 }
 
 /* 2. Main Layout Containers */
-.navbar, .header, .main, .footer {
+.navbar,
+.header,
+.main,
+.footer {
   max-width: 80vw; /* Limits the maximum width on large screens */
-  margin-left: auto;   /* These two lines center the container */
+  margin-left: auto; /* These two lines center the container */
   margin-right: auto;
-  padding-left: 2rem;   /* Adds space inside the container edges */
+  padding-left: 2rem; /* Adds space inside the container edges */
   padding-right: 2rem;
 }
 
@@ -35,15 +52,17 @@ button {
 .navbar {
   display: flex;
   position: fixed;
-  background-color: aliceblue;
+  background-color: #ffffff;
   top: 0;
-  right:0;
-  left:0;
+  right: 0;
+  left: 0;
   justify-content: space-evenly;
   align-items: center;
   gap: 3rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
 }
 
 .navbar img {
@@ -53,24 +72,29 @@ button {
 }
 
 .navbar a {
-  color: #495E57;
+  color: #495e57;
   font-weight: 650;
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #e07a5f;
 }
 
 /* 4. Header Section */
 .header {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Simpler 2-column grid */
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto auto auto;
   grid-template-areas:
     "title image"
     "text  image"
     "button image";
-  align-items: center; /* Vertically align items in the grid */
+  align-items: center;
   gap: 1rem;
-  background-color: #495E57;
-  color: aliceblue;
+  background-color: #495e57;
+  color: #ffffff;
   border-radius: 10px;
   margin-top: 6rem;
   margin-bottom: 6rem;
@@ -81,27 +105,33 @@ button {
 }
 
 .heading {
-    display: flex;
-    grid-area: title;
-    text-align: left;
+  display: flex;
+  grid-area: title;
+  text-align: left;
 }
 
 .header-subtitle {
-    grid-area: text;
-    text-align: left;
-    margin-bottom: 1rem;
+  grid-area: text;
+  text-align: left;
+  margin-bottom: 1rem;
 }
 
 .header-button {
   grid-area: button;
-  justify-self: start; /* Aligns the button to the start of the grid cell */
-  color:#495E57;
-  background-color: yellow;
+  justify-self: start;
+  color: #495e57;
+  background-color: #f4ce14;
   font-weight: 600;
-  padding: 0.75rem 1.5rem; /* Add padding for better clickability */
+  padding: 0.75rem 1.5rem;
   border-radius: 10px;
   cursor: pointer;
   text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.header-button:hover {
+  background-color: #e07a5f;
+  color: #ffffff;
 }
 
 .header-logo {
@@ -120,7 +150,8 @@ button {
 }
 
 /* 5. Highlights & Testimonials Sections */
-.highlights, .testimonials {
+.highlights,
+.testimonials {
   display: flex;
   justify-content: space-evenly;
   gap: 2em;
@@ -129,8 +160,8 @@ button {
 }
 
 .testimonials {
-  background-color: #495E57;
-  color: aliceblue;
+  background-color: #495e57;
+  color: #ffffff;
   border-radius: 10px;
   margin-top: 2rem;
   margin-bottom: 8em;
@@ -141,15 +172,22 @@ button {
   width: 25%;
   display: flex;
   flex-direction: column;
-  background-color: #f0f0f0; /* Added background to distinguish cards */
+  background-color: #ffffff;
   border-radius: 10px;
-  overflow: hidden; /* Keeps content within the rounded corners */
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
 .card .card-content {
-    padding: 1rem;
-    flex-grow: 1; /* Allows this section to grow, pushing the button down */
-    text-align: left;
-    color: #333;
+  padding: 1rem;
+  flex-grow: 1;
+  text-align: left;
+  color: #333333;
 }
 
 .card img:first-child {
@@ -159,16 +197,29 @@ button {
 }
 
 .card button {
-  margin: 1rem; /* Use margin instead of margin-bottom: 0 for spacing */
+  margin: 1rem;
+  background-color: #f4ce14;
+  color: #495e57;
+}
+
+.card button:hover {
+  background-color: #e07a5f;
+  color: #ffffff;
 }
 
 /* 7. Testimonials Card Specifics */
 .testimonials .card {
-  display: flex; /* Revert to flex for simplicity and consistency */
+  display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #333; /* Darker background for contrast */
+  background-color: #333333;
   padding: 1rem;
+}
+
+.testimonials .card p {
+  color: #ffffff;
+  margin-top: 1rem;
+  font-style: italic;
 }
 
 .testimonials .card .dp {
@@ -176,33 +227,35 @@ button {
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid yellow;
+  border: 2px solid #f4ce14;
 }
 
 .testimonials .card .stars {
-  width: 100px; /* Fixed width for star rating image/element */
+  width: 100px;
   margin-top: 0.5rem;
-}
-
-.testimonials .card p {
-  margin-top: 1rem;
-  font-style: italic;
 }
 
 /* 8. Footer */
 .footer {
-    position: fixed;
+  position: fixed;
   bottom: 0;
-  left:0;
-  right:0;
+  left: 0;
+  right: 0;
   text-align: center;
   padding: 1rem;
   margin-top: 2rem;
   height: auto;
-  background-color: #f0f0f0;
+  background-color: #495e57;
+  color: #ffffff;
 }
 
 /* 9. RESPONSIVE DESIGN - MEDIA QUERIES */
+
+/* Menu Page Specific */
+.menu-page {
+  padding: 2rem !important;
+  min-height: calc(100vh - 15rem);
+}
 
 /* For Tablets */
 @media (max-width: 992px) {
@@ -212,7 +265,8 @@ button {
       "text  text"
       "button image"; /* Adjust grid for medium screens */
   }
-  .highlights, .testimonials {
+  .highlights,
+  .testimonials {
     flex-wrap: wrap; /* Allow cards to wrap to the next line */
   }
   .card {
@@ -260,13 +314,15 @@ button {
     align-items: center;
     text-align: center;
   }
-   .header-content, .header .header-subtitle {
+  .header-content,
+  .header .header-subtitle {
     text-align: center;
   }
   .header button {
-     justify-self: center; /* Center the button */
+    justify-self: center; /* Center the button */
   }
-  .highlights, .testimonials {
+  .highlights,
+  .testimonials {
     flex-direction: column; /* Stack cards vertically */
     align-items: center;
   }
